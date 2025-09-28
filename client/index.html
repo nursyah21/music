@@ -50,11 +50,11 @@
 <body>
 
   <div class="float-bottom">
-    <span>Death Bed</span>
-    <audio id="death-bed" controls></audio>
+    <span></span>
+    <audio controls></audio>
   </div>
 
-  <button onclick="() => changeSong"></button>
+  <button onclick="changeSong(listSong[0].src, listSong[0].title)">asd</button>
 
   <div class="container">
     <div id="list"></div>
@@ -63,20 +63,23 @@
   <script>
     const repo = "https://github.com/nursyah21/music/raw/refs/heads/master/repo/"
     const listSong = [
-      "Powfu - death bed (coffee for your head) (Lyrics) ft. beabadoobee [4N-WFXpBjpc].mp4"
+      {
+        src: "Powfu - death bed.mp4",
+        title: "Death Bed"
+      }
     ]
 
     function changeSong(song, title) {
       document.querySelector('span')
         .src = title
 
-      document.querySelector('#death-bed')
+      document.querySelector('audio')
         .src = repo + encodeURI(song)
     }
 
     let list = ''
     for (let i = 0; i < listSong.length; i++) {
-      list += `<button onclick='()=>changeSong("listSong[${i}]", "Death Bed")'>Death Bed</button>`
+      list += `<button onclick='()=>changeSong("${listSong[i].src}", "${listSong[i].title}")'>${listSong[i].title}</button>`
     }
 
     document.querySelector('#list')
