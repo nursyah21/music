@@ -64,18 +64,21 @@
       {
         src: "Powfu - death bed.mp4",
         title: "Death Bed"
+      },
+      {
+        src: "Extreme - More Than Words.webm",
+        title: "More Than Words"
       }
     ]
 
+    const titleSpan = document.querySelector('span')
+    const audio = document.querySelector('audio')
+
     function changeSong(song, title) {
-      document.querySelector('span')
-        .innerHTML = title
+      titleSpan.innerHTML = title
 
-      document.querySelector('audio')
-        .src = repo + encodeURI(song)
-
-      document.querySelector('audio')
-        .play()
+      audio.src = repo + encodeURI(song)
+      audio.play()
     }
 
     let list = ''
