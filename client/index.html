@@ -42,7 +42,7 @@
     }
 
     button {
-      width: 300px;
+      width: 100%;
     }
   </style>
 </head>
@@ -53,8 +53,6 @@
     <span></span>
     <audio controls></audio>
   </div>
-
-  <button onclick="changeSong(listSong[0].src, listSong[0].title)">asd</button>
 
   <div class="container">
     <div id="list"></div>
@@ -71,15 +69,18 @@
 
     function changeSong(song, title) {
       document.querySelector('span')
-        .src = title
+        .innerHTML = title
 
       document.querySelector('audio')
         .src = repo + encodeURI(song)
+
+      document.querySelector('audio')
+        .play()
     }
 
     let list = ''
     for (let i = 0; i < listSong.length; i++) {
-      list += `<button onclick='()=>changeSong("${listSong[i].src}", "${listSong[i].title}")'>${listSong[i].title}</button>`
+      list += `<button onclick='changeSong(listSong[${i}].src, listSong[${i}].title)'>${listSong[i].title}</button>`
     }
 
     document.querySelector('#list')
