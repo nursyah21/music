@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music App</title>
+  <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css");
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+    /* .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      border: 1px;
+    } */
+
+    .float-bottom {
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      background-color: white;
+      width: 100vw;
+    }
+
+    .container {
+      margin-top: 12px;
+    }
+
+    .float-bottom span {
+      margin-left: 8px;
+      font-weight: bold;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    button {
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="float-bottom">
+    <span>Death Bed</span>
+    <audio id="death-bed" controls></audio>
+  </div>
+
+  <button onclick="() => changeSong"></button>
+
+  <div class="container">
+    <div id="list"></div>
+  </div>
+
+  <script>
+    const repo = "https://github.com/nursyah21/music/raw/refs/heads/master/repo/"
+    const listSong = [
+      "Powfu - death bed (coffee for your head) (Lyrics) ft. beabadoobee [4N-WFXpBjpc].mp4"
+    ]
+
+    function changeSong(song, title) {
+      document.querySelector('span')
+        .src = title
+
+      document.querySelector('#death-bed')
+        .src = repo + encodeURI(song)
+    }
+
+    let list = ''
+    for (let i = 0; i < listSong.length; i++) {
+      list += `<button onclick='()=>changeSong("listSong[${i}]", "Death Bed")'>Death Bed</button>`
+    }
+
+    document.querySelector('#list')
+      .innerHTML = list
+  </script>
+</body>
+
+</html>
